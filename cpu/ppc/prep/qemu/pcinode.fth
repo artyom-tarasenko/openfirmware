@@ -28,6 +28,15 @@ h# 1c000 encode-int				\ Mask of implemented slots
 : config-w!  ( w config-adr -- )  config-setup pw! ;
 : config-l!  ( l config-adr -- )  config-setup pl! ;
 
+create slot-map
+
+\  Pin A  Pin B  Pin C  Pin D     Dev#
+
+    0 c,   1 c,   2 c,   3 c,   \ Slot 1
+    1 c,   2 c,   3 c,   0 c,   \ Slot 2
+    2 c,   3 c,   0 c,   1 c,   \ Slot 3
+    3 c,   0 c,   1 c,   2 c,   \ Slot 4
+
 
 fload ${BP}/dev/pci/intmap.fth		\ Generic interrupt mapping code
 
