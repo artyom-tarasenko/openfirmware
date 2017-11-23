@@ -5,6 +5,10 @@ dev /
 " device-tree" device-name
 " QEMU PReP/40p" model
 
+80 " aix-bus-id" integer-property
+: pnp-decode-reg  ( adr len -- adr' len' d.size d.base info type false true )
+   decode-int >r  decode-int 0  r> 0  d# 32  3  false true
+;
 : init  ( -- )
 
    d# 66,666,666  " clock-frequency" integer-property  \ For root bus
